@@ -1179,7 +1179,6 @@ GameObject:
   - component: {fileID: 582825514}
   - component: {fileID: 582825505}
   - component: {fileID: 582825504}
-  - component: {fileID: 582825503}
   - component: {fileID: 582825502}
   - component: {fileID: 582825510}
   - component: {fileID: 582825513}
@@ -1206,23 +1205,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1043919695}
   collectSound: {fileID: 582825513}
---- !u!114 &582825503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 582825501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7acd0fed945cfc41a654d3cea2ac1c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 7
-  groundCheckDistance: -6
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!114 &582825504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1250,7 +1232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d895853c5add75c449fab7f89d6f3a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 582825510}
   quit:
     m_Name: Quit
     m_Type: 0
@@ -1285,9 +1267,10 @@ MonoBehaviour:
       m_Action: Restart
       m_Flags: 0
     m_Flags: 0
-  jumpForce: 7
   playerSpeed: 10
   KillEnemy: {fileID: 582825511}
+  jumpValue: 7
+  jumpCooldown: 1
 --- !u!136 &582825506
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3479,7 +3462,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.1421, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3528,7 +3511,7 @@ GameObject:
   - component: {fileID: 1671914869}
   - component: {fileID: 1671914873}
   m_Layer: 3
-  m_Name: Ground
+  m_Name: groundLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

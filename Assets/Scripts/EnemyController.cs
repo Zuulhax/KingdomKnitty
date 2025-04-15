@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
             Vector3 direction = (player.transform.position - transform.position).normalized;
 
             // Move the enemy towards the player
-            transform.Translate(direction * speed * Time.deltaTime);
+            transform.Translate(speed * Time.deltaTime * direction);
         }
     }
 }

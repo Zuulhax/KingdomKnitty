@@ -17,12 +17,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private InputAction quit;
     [SerializeField] private InputAction restart;
-    [SerializeField] private float jumpForce = 7f;
     [SerializeField] private float playerSpeed = 10f;
     [SerializeField] private AudioSource KillEnemy;
+    [SerializeField] private float jumpValue = 7f;
+    [SerializeField] private float jumpCooldown = 1f;
 
-    private Rigidbody _rb;
-
+    private Rigidbody rb;
+    private bool isGrounded = true;
+    private float jumpTimer = 0f;
     private Vector3 playerMovement;
 
     /// <summary>
@@ -30,12 +32,15 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         playerInput.currentActionMap.Enable();
 
         SetupActions();
     }
 
+    /// <summary>
+    /// This is where the actions are located in the action map
+    /// </summary>
     private void SetupActions()
     {
         restart = playerInput.currentActionMap.FindAction("Restart");
@@ -45,17 +50,28 @@ public class PlayerController : MonoBehaviour
         quit.performed += Quit_performed;
     }
 
+    /// <summary>
+    /// This performs quit
+    /// </summary>
+    /// <param name="context"></param>
     private void Quit_performed(InputAction.CallbackContext context)
     {
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
     }
 
+    /// <summary>
+    /// This performs restart
+    /// </summary>
+    /// <param name="context"></param>
     private void Restart_performed(InputAction.CallbackContext context)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    /// <summary>
+    /// ends the action(s) of quit and restart
+    /// </summary>
     private void OnDestroy()
     {
         restart.performed -= Restart_performed;
@@ -68,7 +84,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void OnJump(InputValue value)
     {
-        _rb.velocity = new Vector3(0, jumpForce, 0);
+        if (jumpTimer <= 0 && isGrounded)
+        {
+            rb.velocity = new Vector3(0, jumpValue, 0);
+            jumpTimer = jumpCooldown;
+        }
     }
 
     /// <summary>
@@ -85,9 +105,16 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// updates the players movement every frame
     /// </summary>
-    private void Update()
+    void Update()
     {
-        _rb.velocity = new Vector3(playerMovement.x, _rb.velocity.y, playerMovement.z);
+        rb.velocity = new Vector3(playerMovement.x, rb.velocity.y, playerMovement.z);
+
+        if (jumpTimer > 0)
+        {
+            jumpTimer -= Time.deltaTime;
+        }
+
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
     }
 
     /// <summary>
