@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     private void Quit_performed(InputAction.CallbackContext context)
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
     /// <summary>

@@ -15,7 +15,7 @@ public class EndScript : MonoBehaviour
     /// </summary>
     public void EndGame()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
 
         if (Application.isPlaying)
         {
