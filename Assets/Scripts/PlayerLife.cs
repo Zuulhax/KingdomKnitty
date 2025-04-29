@@ -4,7 +4,7 @@
 // Creation Date : March 27, 2025
 //
 // Brief Description : This script is to tell the player to die upon contact with an enemy, and respawn after a brief
-// period of time.
+// period of time. It also plays a sound when the player dies.
 *****************************************************************************/
 
 using UnityEngine;

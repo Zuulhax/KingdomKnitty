@@ -3,7 +3,7 @@
 // Author : Hunter A. Breitenstein
 // Creation Date : March 31, 2025
 //
-// Brief Description : This script allows the player to interact with the start button.
+// Brief Description : This script allows the player to interact with the start button to start the game.
 *****************************************************************************/
 
 using UnityEngine;

@@ -3,7 +3,8 @@
 // Author : Hunter A. Breitenstein
 // Creation Date : April 17, 2025
 //
-// Brief Description : This script sends the player to the next scene in the build index when they touch the door
+// Brief Description : This script sends the player to the next scene in the build index when they touch the door.
+    It also plays a sound when you go through the door.
 *****************************************************************************/
 
 using UnityEngine;

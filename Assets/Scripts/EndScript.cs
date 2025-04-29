@@ -3,7 +3,7 @@
 // Author : Hunter A. Breitenstein
 // Creation Date : April 17, 2025
 //
-// Brief Description : This script exits the game when the "Quit" button on screen is pressed
+// Brief Description : This script allows the player to interact with the "Quit" button to quit the game.
 *****************************************************************************/
 
 using UnityEngine;

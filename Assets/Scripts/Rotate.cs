@@ -1,5 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+/*****************************************************************************
+// File Name : Rotate.cs
+// Author : Hunter A. Breitenstein
+// Creation Date : April 17, 2025
+//
+// Brief Description : This script constantly rotates the coins
+*****************************************************************************/
+
 using UnityEngine;
 
 public class Rotate : MonoBehaviour
@@ -8,7 +14,9 @@ public class Rotate : MonoBehaviour
     [SerializeField] private float ySpeed;
     [SerializeField] private float zSpeed;
 
-    // Update is called once per frame
+    /// <summary>
+    /// rotate the coins on either the x, y, or z axis
+    /// </summary>
     void Update()
     {
         transform.Rotate(360 * xSpeed * Time.deltaTime, 360 * ySpeed * Time.deltaTime, 360 * zSpeed * Time.deltaTime); 

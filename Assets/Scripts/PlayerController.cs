@@ -4,7 +4,7 @@
 // Creation Date : March 27, 2025
 //
 // Brief Description : This script allows the player to control the character. It also allows the player to kill
-// enemies.
+// enemies. finally, it controlls when the KillEnemy sound plays
 *****************************************************************************/
 
 using System;
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     private void Quit_performed(InputAction.CallbackContext context)
     {
         Application.Quit();
-        //UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
     /// <summary>
@@ -121,15 +121,15 @@ public class PlayerController : MonoBehaviour
     /// Destroys enemy upon its death
     /// </summary>
     /// <param name="collision"></param>
-    private void OnCollisionEnter(Collision collision)
-    {
-        //if the player collides (jumps on) the enemy's head
-        if (collision.gameObject.CompareTag("EnemyHead"))
-        {
-            KillEnemy.Play();
+  private void OnCollisionEnter(Collision collision)
+  {
+      //if the player collides (jumps on) the enemy's head
+      if (collision.gameObject.CompareTag("EnemyHead"))
+      {
+          KillEnemy.Play();
 
-            //destroy the parent aka the enemy
-            Destroy(collision.transform.parent.gameObject);
-        }
-    }
+          //destroy the parent aka the enemy
+          Destroy(collision.transform.parent.gameObject);
+      }
+  }
 }
