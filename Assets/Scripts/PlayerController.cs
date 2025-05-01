@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputAction restart;
     [SerializeField] private float playerSpeed = 10f;
     [SerializeField] private AudioSource KillEnemy;
-    [SerializeField] private float jumpValue = 7f;
+    [SerializeField] private float jumpValue = 8f;
     [SerializeField] private float jumpCooldown = 1f;
 
     private Rigidbody rb;
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
             jumpTimer -= Time.deltaTime;
         }
 
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.6f);
     }
 
     /// <summary>
