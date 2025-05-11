@@ -17,18 +17,25 @@ public class ScoreController : MonoBehaviour
     [SerializeField] private AudioSource killSound;
     private int score;
 
-    // Start is called before the first frame update
     void Start()
     {
         score = 0;
         UpdateScore();
     }
 
+
+    /// <summary>
+    /// Updates the score text
+    /// </summary>
     private void UpdateScore()
     {
         scoreText.text = "Score: " + score.ToString();
     }
 
+    /// <summary>
+    /// Increases the score as the player collects coins
+    /// </summary>
+    /// <param name="thingIHit"></param>
     private void OnTriggerEnter(Collider thingIHit)
     {
         //if I hit (collided with) a coin
